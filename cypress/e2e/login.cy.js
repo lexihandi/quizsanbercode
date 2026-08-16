@@ -81,13 +81,12 @@ describe('Login OrangeHRM', () => {
   });
 
 it('TC-LOGIN-010 - Login dengan username menggunakan huruf kecil', () => {
-  cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-  cy.get('[name="username"]').type('admin');
-  cy.get('[name="password"]').type('admin123');
-  cy.get('.orangehrm-login-button').click();
-  cy.get('.oxd-alert-content-text')
-    .should('contain', 'Invalid credentials');
-});
+  cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+  cy.get('[name="username"]').type('admin')
+  cy.get('[name="password"]').type('admin123')
+  cy.get('.orangehrm-login-button').click()
+  cy.url().should('include', '/dashboard')
+})
 
   it('TC-LOGIN-011 - Mengakses Forgot your password', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
